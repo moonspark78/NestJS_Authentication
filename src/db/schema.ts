@@ -20,7 +20,13 @@ export const users = pgTable('users', {
 
 export const taskStatusEnum = pgEnum('task_status', ['todo', 'in_progress', 'done']);
 
-export const tasks = pgTable('tasks', {});
+export const tasks = pgTable('tasks', {
+    id: uuid('id').primaryKey().defaultRandom(),
+    title: text('title').notNull(),
+    description: text('description'),
+    status: taskStatusEnum('status').notNull().default('todo'),
+    userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
+});
 
 
 
