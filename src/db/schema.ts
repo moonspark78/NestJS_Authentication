@@ -26,6 +26,8 @@ export const tasks = pgTable('tasks', {
     description: text('description'),
     status: taskStatusEnum('status').notNull().default('todo'),
     userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
 
