@@ -18,5 +18,9 @@ export const users = pgTable('users', {
     updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
+export const taskStatusEnum = pgEnum('task_status', ['todo', 'in_progress', 'done']);
+
+export const tasks = pgTable('tasks', {});
+
 
 
