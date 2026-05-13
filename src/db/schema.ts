@@ -1,5 +1,4 @@
-import { boolean } from 'drizzle-orm/gel-core';
-import { pgEnum, pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { pgEnum, pgTable, text, timestamp, uuid, boolean } from 'drizzle-orm/pg-core';
 
 export const userRoleEnum = pgEnum('user_role', ['admin', 'user']);
 
@@ -11,6 +10,12 @@ export const users = pgTable('users', {
     role: userRoleEnum('role').notNull().default('user'),
     isVerified: boolean('is_verified').notNull().default(false),
     verificationToken: text('verification_token'),
+    verificationTokenExpiresAt: text('verification_token_expires_at'),
+    resetToken: text('reset_token'),
+    resetTokenExpiresAt: text('reset_token_expires_at'),
+    refreshTokenHash: text('refresh_token_hash'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
 
