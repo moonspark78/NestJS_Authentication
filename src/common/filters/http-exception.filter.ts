@@ -1,6 +1,8 @@
-import type { 
-    ArgumentsHost, 
-    ExceptionFilter
+import { 
+    HttpException,
+    HttpStatus,
+    type ArgumentsHost, 
+    type ExceptionFilter
 } from "@nestjs/common";
 
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -8,5 +10,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<Request>();
+
+        const status =
+            exception instanceof HttpException
+                ? exception.getStatus()
+                : HttpStatus.INTERNAL_SERVER_ERROR;
     }
 }
