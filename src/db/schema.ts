@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, text, timestamp, uuid, boolean } from 'drizzle-orm/pg-core';
+import { boolean, pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 export const userRoleEnum = pgEnum('user_role', ['admin', 'user']);
 
@@ -31,4 +31,4 @@ export const tasks = pgTable('tasks', {
 });
 
 
-
+export type User = typeof users.$inferSelect;
