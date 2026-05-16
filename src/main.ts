@@ -11,6 +11,12 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   app.use(cookieParser())
   app.setGlobalPrefix('api');
+
+  app.useGlobalPipes(
+    new ValidationPipe({})
+  )
+
+
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
