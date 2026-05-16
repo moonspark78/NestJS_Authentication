@@ -5,14 +5,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { AppModule } from './app.module';
-import { log } from 'console';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
   app.use(cookieParser())
   app.setGlobalPrefix('api');
-  app.useGlobalPipes(new HttpExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
     .setTitle('NestJS Auth API')
