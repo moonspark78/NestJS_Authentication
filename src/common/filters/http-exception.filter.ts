@@ -20,5 +20,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
             exception instanceof HttpException
                 ? exception.getResponse()
                 : "Internal server error";
+
+        const message =
+            typeof exceptionResponse === "string"
     }
 }
