@@ -5,6 +5,7 @@ import {
     type ExceptionFilter
 } from "@nestjs/common";
 import type { Request, Response } from "express";
+import path from "path";
 
 export class HttpExceptionFilter implements ExceptionFilter {
     catch(exception: unknown, host: ArgumentsHost) {
@@ -32,6 +33,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
             statusCode: status,
             message,
             timestamp: new Date().toISOString(),
+            path: request.url,
         });
     }
 }
