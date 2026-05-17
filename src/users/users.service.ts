@@ -22,4 +22,6 @@ export class UsersService {
         const [user] = await db.insert(users).values(data).returning();
         return user;
     }
+
+    async update(id: string, data: Partial<typeof users.$inferInsert>) {}
 }
