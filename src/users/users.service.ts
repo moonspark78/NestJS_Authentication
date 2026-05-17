@@ -25,5 +25,7 @@ export class UsersService {
 
     async update(id: string, data: Partial<typeof users.$inferInsert>) {
         const [user] = await db
+            .update(users)
+            .set({...data, updatedAt: new Date() })
     }
 }
