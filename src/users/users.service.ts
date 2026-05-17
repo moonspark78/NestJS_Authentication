@@ -35,4 +35,8 @@ export class UsersService {
     async findAll() {
         return db.query.users.findMany();
     }
+
+    async delete(id: string) {
+        await db.delete(users).where(eq(users.id, id));
+    }
 }
