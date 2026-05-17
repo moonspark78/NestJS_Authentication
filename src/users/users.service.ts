@@ -5,4 +5,10 @@ import { eq } from "drizzle-orm";
 import { NewUser } from "src/db/schema";
 
 @Injectable()
-export class UsersService {}
+export class UsersService {
+    async findByEmail(email: string) {
+        return db.query.users.findFirst({
+            where: eq(users.email, email)
+        });
+    }
+}
