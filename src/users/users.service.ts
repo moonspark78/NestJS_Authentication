@@ -11,4 +11,6 @@ export class UsersService {
             where: eq(users.email, email)
         });
     }
+
+    async findById(id: string) {}
 }
