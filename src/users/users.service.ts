@@ -31,4 +31,8 @@ export class UsersService {
             .returning();
         return user;
     }
+
+    async findAll() {
+        return db.query.users.findMany();
+    }
 }
