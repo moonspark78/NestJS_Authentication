@@ -13,6 +13,13 @@ export class UsersService {
     }
 
     async findById(id: string) {
-        return db.query.users.findFirst({});
+        return db.query.users.findFirst({
+            where: eq(users.id, id)
+        });
+    }
+
+    async create(data: NewUser) {
+        const [user] = await db.insert(users).values(data).returning();
+        return user;
     }
 }
