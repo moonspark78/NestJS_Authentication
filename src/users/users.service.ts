@@ -12,5 +12,7 @@ export class UsersService {
         });
     }
 
-    async findById(id: string) {}
+    async findById(id: string) {
+        return db.query.users.findFirst({});
+    }
 }
