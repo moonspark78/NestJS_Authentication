@@ -39,7 +39,8 @@ export class EmailService {
             html: `
                 <h2>Forgot Your Password?</h2>
                 <p>Click the link below to reset your password:</p>
-                
+                <a href="${resetUrl}">Reset Password</a>
+                <p>If you didn't request a password reset, you can ignore this email.</p>
             `,
         });
     }
