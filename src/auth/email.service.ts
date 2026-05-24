@@ -10,4 +10,8 @@ export class EmailService {
     constructor(private configService: ConfigService) {
         this.resend = new Resend(this.configService.get('RESEND_API_KEY'));
     }
+
+    async sendVerificationEmail(email: string, token: string) {
+        const appUrl = this.configService.get<string>('APP_URL');
+    }
 }
