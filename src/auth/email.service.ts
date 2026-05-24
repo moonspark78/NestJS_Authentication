@@ -34,7 +34,12 @@ export class EmailService {
 
         await this.resend.emails.send({
             from: "onboarding@resend.dev",
-
+            to: email,
+            subject: "Reset Your Password",
+            html: `
+                <h2>Forgot Your Password?</h2>
+               
+            `,
         });
     }
 
