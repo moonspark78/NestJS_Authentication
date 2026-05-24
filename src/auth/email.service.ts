@@ -27,4 +27,10 @@ export class EmailService {
             `,
         });
     }
+
+    async sendPasswordResetEmail(email: string, token: string) {
+        const appUrl = this.configService.get<string>('APP_URL');
+        const verificationUrl = `${appUrl}/api/auth/verify-email?token=${token}`;
+    }
+
 }
