@@ -38,7 +38,8 @@ export class EmailService {
             subject: "Reset Your Password",
             html: `
                 <h2>Forgot Your Password?</h2>
-               
+                <p>Click the link below to reset your password:</p>
+                
             `,
         });
     }
