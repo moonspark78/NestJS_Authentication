@@ -14,5 +14,17 @@ export class EmailService {
     async sendVerificationEmail(email: string, token: string) {
         const appUrl = this.configService.get<string>('APP_URL');
         const verificationUrl = `${appUrl}/api/auth/verify-email?token=${token}`;
+
+        await this.resend.emails.send({
+            from: "onboarding@resend.dev",
+            to: email,
+            subject: "Verify Your Email",
+            html: `
+                <h2>Welcome! Please verify your email address.</h2>
+                <p>Click the link below to verify your email address:</p>
+                <a href="${verificationUrl}">Verify Email</a>
+                <p>If you didn't create an account, you can ignore this email.</p>
+            `,
+        });
     }
 }
