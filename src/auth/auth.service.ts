@@ -31,5 +31,9 @@ export class AuthService {
         if (existingUser) {
             throw new ConflictException("Email is already in use");
         }
+
+        const passwordHash = await bcrypt.hash(dto.password, 12);
+
+        const verificationToken = crypto.randomBytes(32).toString("hex");
     }
 }
