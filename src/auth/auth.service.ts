@@ -24,4 +24,8 @@ export class AuthService {
         private emailService: EmailService,
         private configService: ConfigService
     ) {}
+
+    async register(dto: RegisterDto) {
+        const existingUser = await this.usersService.findByEmail(dto.email);
+    }
 }
