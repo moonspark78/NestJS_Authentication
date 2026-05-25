@@ -35,5 +35,8 @@ export class AuthService {
         const passwordHash = await bcrypt.hash(dto.password, 12);
 
         const verificationToken = crypto.randomBytes(32).toString("hex");
+        const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
+        const user = await this.usersService.create({})
     }
 }
