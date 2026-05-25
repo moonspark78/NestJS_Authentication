@@ -42,7 +42,8 @@ export class AuthService {
             email: dto.email,
             passwordHash,
             verificationToken,
-            verificationTokenExpiresAt,
+            verificationTokenExpiresAt: verificationTokenExpiresAt.toISOString()
+
         });
 
         this.emailService.sendVerificationEmail(user.email, verificationToken);
