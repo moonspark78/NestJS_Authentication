@@ -35,12 +35,21 @@ export class AuthService {
         const passwordHash = await bcrypt.hash(dto.password, 12);
 
         const verificationToken = crypto.randomBytes(32).toString("hex");
-        const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+        const verificationTokenExpiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
         const user = await this.usersService.create({
             name: dto.name,
             email: dto.email,
             passwordHash,
-        })
+            verificationToken,
+            verificationTokenExpiresAt,
+        });
+
+        this.emailService.sendVerificationEmail(user.email, verificationToken);
+
+        return {
+            message:
+                "Registration successful! Please check your email to verify your account.",
+        };
     }
 }
