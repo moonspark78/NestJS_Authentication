@@ -16,3 +16,7 @@ import {LoginDto} from "./dto/login.dto";
 import type { Response } from "express";
 import type { User} from "src/db/schema"
 
+@Injectable()
+export class AuthService {
+    constructor() {}
+}
