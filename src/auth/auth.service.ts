@@ -18,5 +18,10 @@ import type { User} from "src/db/schema"
 
 @Injectable()
 export class AuthService {
-    constructor() {}
+    constructor(
+        private usersService: UsersService,
+        private jwtService: JwtService,
+        private emailService: EmailService,
+        private configService: ConfigService
+    ) {}
 }
