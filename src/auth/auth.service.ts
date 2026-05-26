@@ -79,6 +79,7 @@ export class AuthService {
             accessToken: token.accessToken,
             user: {
                 id: user.id,
+                email: user.email,
             }
         }
     }
