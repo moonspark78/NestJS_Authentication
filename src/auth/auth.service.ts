@@ -74,5 +74,12 @@ export class AuthService {
         const token = await this.generateToken(user);
         await this.saveRefreshToken(user.id, token.refreshToken);
         this.setRefreshTokenCookie(res, token.refreshToken);
+
+        return {
+            accessToken: token.accessToken,
+            user: {
+                id: user.id,
+            }
+        }
     }
 }
