@@ -66,5 +66,9 @@ export class AuthService {
         if (!passwordMatch) {
             throw new UnauthorizedException("Invalid email or password");
         }
+
+        if (!user.isVerified) {
+            throw new UnauthorizedException("Please verify your email before logging in");
+        }
     }
 }
