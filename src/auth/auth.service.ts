@@ -71,12 +71,12 @@ export class AuthService {
             throw new UnauthorizedException("Please verify your email before logging in");
         }
 
-        const token = await this.generateToken(user);
-        await this.saveRefreshToken(user.id, token.refreshToken);
-        this.setRefreshTokenCookie(res, token.refreshToken);
+        const tokens = await this.generateToken(user);
+        await this.saveRefreshToken(user.id, tokens.refreshToken);
+        this.setRefreshTokenCookie(res, tokens.refreshToken);
 
         return {
-            accessToken: token.accessToken,
+            accessToken: tokens.accessToken,
             user: {
                 id: user.id,
                 email: user.email,
@@ -84,5 +84,9 @@ export class AuthService {
                 role: user.role,
             },
         }
+    }
+
+    private async generateToken(user: User) {
+        const payload = { sub: user.id, email: user.email, role: user.role };
     }
 }
