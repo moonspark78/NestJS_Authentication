@@ -98,7 +98,6 @@ export class AuthService {
             expiresIn: this.configService.get('JWT_REFRESH_EXPIRES_IN')
         }); 
 
-
         return {
             accessToken: await accessToken,
             refreshToken: await refreshToken
