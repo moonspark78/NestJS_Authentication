@@ -46,11 +46,15 @@ export class AuthService {
 
         });
 
-        this.emailService.sendVerificationEmail(user.email, verificationToken);
+        void this.emailService.sendVerificationEmail(user.email, verificationToken);
 
         return {
             message:
                 "Registration successful! Please check your email to verify your account.",
         };
+    }
+
+    async login(dto: LoginDto, res:Response) {
+        const user = await this.usersService.findByEmail(dto.email);
     }
 }
