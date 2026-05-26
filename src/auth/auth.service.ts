@@ -70,5 +70,8 @@ export class AuthService {
         if (!user.isVerified) {
             throw new UnauthorizedException("Please verify your email before logging in");
         }
+
+        const token = await this.generateToken(user);
+        await this.saveRefreshToken(user.id, token.refreshToken);
     }
 }
