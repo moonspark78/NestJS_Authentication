@@ -88,5 +88,14 @@ export class AuthService {
 
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
+
+        const accessToken = this.jwtService.signAsync(payload, {});
+        const refreshToken = this.jwtService.signAsync(payload, {}); 
+
+
+        return {
+            accessToken: await accessToken,
+            refreshToken: await refreshToken
+        };
     }
 }
