@@ -111,6 +111,8 @@ export class AuthService {
         if (!tokenMatch) {
             throw new UnauthorizedException("Invalid refresh token");
         }
+
+        const tokens = await this.generateToken(user);
     }
 
     private async generateToken(user: User) {
