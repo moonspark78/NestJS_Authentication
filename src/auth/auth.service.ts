@@ -103,4 +103,6 @@ export class AuthService {
             refreshToken: await refreshToken
         };
     }
+
+    private async saveRefreshToken(userId: string, refreshToken: string) {}
 }
