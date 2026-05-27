@@ -108,4 +108,6 @@ export class AuthService {
         const refreshTokenHash = await bcrypt.hash(refreshToken, 12);
         await this.usersService.update(userId, { refreshTokenHash });
     }
+
+    private setRefreshTokenCookie(res: Response, refreshToken: string) {}
 }
