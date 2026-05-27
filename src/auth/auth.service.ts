@@ -104,5 +104,7 @@ export class AuthService {
         };
     }
 
-    private async saveRefreshToken(userId: string, refreshToken: string) {}
+    private async saveRefreshToken(userId: string, refreshToken: string) {
+        const refreshTokenHash = await bcrypt.hash(refreshToken, 12);
+    }
 }
