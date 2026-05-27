@@ -121,6 +121,8 @@ export class AuthService {
         }
     }
 
+    async logout(userId: string, res: Response) {}
+
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
 
