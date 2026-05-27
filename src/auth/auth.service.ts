@@ -101,6 +101,10 @@ export class AuthService {
         }
 
         const user = await this.usersService.findById(payload.sub);
+
+        if (!user || !user.refreshTokenHash) {
+            throw new UnauthorizedException("Invalid refresh token");
+        }
     }
 
     private async generateToken(user: User) {
