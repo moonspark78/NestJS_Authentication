@@ -125,6 +125,7 @@ export class AuthService {
         await this.usersService.update(userId, { refreshTokenHash: null });
 
         res.clearCookie('refresh_token');
+        return { message: "Logged out successfully" };
     }
 
     private async generateToken(user: User) {
