@@ -114,6 +114,7 @@ export class AuthService {
 
         const tokens = await this.generateToken(user);
         await this.saveRefreshToken(user.id, tokens.refreshToken);
+        this.setRefreshTokenCookie(res, tokens.refreshToken);
     }
 
     private async generateToken(user: User) {
