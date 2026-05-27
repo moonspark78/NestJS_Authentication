@@ -90,6 +90,11 @@ export class AuthService {
         if (!refreshToken) {
             throw new UnauthorizedException("Refresh token is missing");
         }
+
+        let payload: { sub: string; email: string };
+        try {
+            payload = await this.jwtService.verifyAsync(refreshToken, {});
+        } catch {}
     }
 
     private async generateToken(user: User) {
