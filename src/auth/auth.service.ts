@@ -121,7 +121,9 @@ export class AuthService {
         }
     }
 
-    async logout(userId: string, res: Response) {}
+    async logout(userId: string, res: Response) {
+        await this.usersService.update(userId, { refreshTokenHash: null });
+    }
 
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
