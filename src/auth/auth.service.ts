@@ -99,6 +99,8 @@ export class AuthService {
         } catch {
             throw new UnauthorizedException("Invalid refresh token");
         }
+
+        const user = await this.usersService.findById(payload.sub);
     }
 
     private async generateToken(user: User) {
