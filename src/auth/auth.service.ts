@@ -96,7 +96,9 @@ export class AuthService {
             payload = await this.jwtService.verifyAsync(refreshToken, {
                 secret: this.configService.get("JWT_REFRESH_SECRET"),
             });
-        } catch {}
+        } catch {
+            throw new UnauthorizedException("Invalid refresh token");
+        }
     }
 
     private async generateToken(user: User) {
