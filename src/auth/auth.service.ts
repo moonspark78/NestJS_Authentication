@@ -107,6 +107,10 @@ export class AuthService {
         }
 
         const tokenMatch = await bcrypt.compare(refreshToken, user.refreshTokenHash);
+
+        if (!tokenMatch) {
+            throw new UnauthorizedException("Invalid refresh token");
+        }
     }
 
     private async generateToken(user: User) {
