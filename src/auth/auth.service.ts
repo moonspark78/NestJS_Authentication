@@ -93,7 +93,9 @@ export class AuthService {
 
         let payload: { sub: string; email: string };
         try {
-            payload = await this.jwtService.verifyAsync(refreshToken, {});
+            payload = await this.jwtService.verifyAsync(refreshToken, {
+                secret: this.configService.get("JWT_REFRESH_SECRET"),
+            });
         } catch {}
     }
 
