@@ -110,6 +110,8 @@ export class AuthService {
     }
 
     private setRefreshTokenCookie(res: Response, refreshToken: string) {
-        res.cookie("refresh_token", refreshToken, {});
+        res.cookie("refresh_token", refreshToken, {
+            httpOnly: true,
+        });
     }
 }
