@@ -54,7 +54,9 @@ export class AuthService {
         };
     }
 
-    async verifyEmail(token: string) {}
+    async verifyEmail(token: string) {
+        const user = await this.usersService.findByVerificationToken(token);
+    }
 
     async login(dto: LoginDto, res:Response) {
         const user = await this.usersService.findByEmail(dto.email);
