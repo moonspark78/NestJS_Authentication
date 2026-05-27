@@ -109,5 +109,7 @@ export class AuthService {
         await this.usersService.update(userId, { refreshTokenHash });
     }
 
-    private setRefreshTokenCookie(res: Response, refreshToken: string) {}
+    private setRefreshTokenCookie(res: Response, refreshToken: string) {
+        res.cookie("refresh_token", refreshToken, {});
+    }
 }
