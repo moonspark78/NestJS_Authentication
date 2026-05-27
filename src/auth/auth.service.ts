@@ -86,6 +86,12 @@ export class AuthService {
         }
     }
 
+    async refresh(refreshToken: string, res: Response) {
+        if (!refreshToken) {
+            throw new UnauthorizedException("Refresh token is missing");
+        }
+    }
+
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
 
