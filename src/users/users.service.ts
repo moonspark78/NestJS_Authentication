@@ -6,6 +6,7 @@ import { NewUser } from "src/db/schema";
 
 @Injectable()
 export class UsersService {
+    async findByVerificationToken(token: string) {}
     async findByEmail(email: string) {
         return db.query.users.findFirst({
             where: eq(users.email, email)
