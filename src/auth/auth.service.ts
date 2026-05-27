@@ -123,6 +123,8 @@ export class AuthService {
 
     async logout(userId: string, res: Response) {
         await this.usersService.update(userId, { refreshTokenHash: null });
+
+        res.clearCookie('refresh_token');
     }
 
     private async generateToken(user: User) {
