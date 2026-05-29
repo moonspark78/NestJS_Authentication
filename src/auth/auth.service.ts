@@ -1,20 +1,19 @@
-import { 
-    Injectable,
-    ConflictException,
-    UnauthorizedException,
+import {
     BadRequestException,
-    NotFoundException,
+    ConflictException,
+    Injectable,
+    UnauthorizedException
 } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
-import {ConfigService} from "@nestjs/config";
 import * as bcrypt from "bcryptjs";
 import * as crypto from "crypto";
-import { UsersService } from "src/users/users.service";
-import { EmailService } from "./email.service";
-import {RegisterDto} from "./dto/register.dto";
-import {LoginDto} from "./dto/login.dto";
 import type { Response } from "express";
-import type { User} from "src/db/schema"
+import type { User } from "src/db/schema";
+import { UsersService } from "src/users/users.service";
+import { LoginDto } from "./dto/login.dto";
+import { RegisterDto } from "./dto/register.dto";
+import { EmailService } from "./email.service";
 
 @Injectable()
 export class AuthService {
@@ -54,7 +53,7 @@ export class AuthService {
         };
     }
 
-    async verifyEmail(token: string) {
+    async verifyEmail(token: string, res: Response) {
         const user = await this.usersService.findByVerificationToken(token);
 
         if (!user || !user.verificationToken) {
@@ -77,6 +76,10 @@ export class AuthService {
         const tokens = await this.generateToken(user);
         await this.saveRefreshToken(user.id, tokens.refreshToken);
         this.setRefreshTokenCookie(res, tokens.refreshToken);
+
+        return {
+            message: "Email verified successfully! You are now logged in.",
+        }
     }
 
     async login(dto: LoginDto, res:Response) {
