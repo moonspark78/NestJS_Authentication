@@ -75,6 +75,7 @@ export class AuthService {
         });
 
         const tokens = await this.generateToken(user);
+        await this.saveRefreshToken(user.id, tokens.refreshToken);
     }
 
     async login(dto: LoginDto, res:Response) {
