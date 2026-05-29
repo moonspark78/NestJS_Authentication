@@ -68,7 +68,11 @@ export class AuthService {
             throw new BadRequestException("Verification token has expired");
         }
 
-        await this.usersService.update(user.id, {});
+        await this.usersService.update(user.id, {
+            isVerified: true,
+            verificationToken: null,
+
+        });
     }
 
     async login(dto: LoginDto, res:Response) {
