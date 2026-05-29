@@ -73,6 +73,8 @@ export class AuthService {
             verificationToken: null,
             verificationTokenExpiresAt: null,
         });
+
+        const tokens = await this.generateToken(user);
     }
 
     async login(dto: LoginDto, res:Response) {
