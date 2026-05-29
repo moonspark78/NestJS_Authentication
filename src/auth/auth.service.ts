@@ -61,7 +61,10 @@ export class AuthService {
             throw new BadRequestException("Invalid verification token");
         }
 
-        
+        if (
+            user.verificationTokenExpiresAt &&
+            user.verificationTokenExpiresAt < new Date()
+        ) {}
     }
 
     async login(dto: LoginDto, res:Response) {
