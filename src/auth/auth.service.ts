@@ -71,7 +71,7 @@ export class AuthService {
         await this.usersService.update(user.id, {
             isVerified: true,
             verificationToken: null,
-
+            verificationTokenExpiresAt: null,
         });
     }
 
