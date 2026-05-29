@@ -79,6 +79,8 @@ export class AuthService {
 
         return {
             message: "Email verified successfully! You are now logged in.",
+            accessToken: tokens.accessToken,
+            user: {}
         }
     }
 
