@@ -63,8 +63,10 @@ export class AuthService {
 
         if (
             user.verificationTokenExpiresAt &&
-            user.verificationTokenExpiresAt < new Date()
-        ) {}
+            new Date(user.verificationTokenExpiresAt) < new Date()
+        ) {
+            throw new BadRequestException("Verification token has expired");
+        }
     }
 
     async login(dto: LoginDto, res:Response) {
