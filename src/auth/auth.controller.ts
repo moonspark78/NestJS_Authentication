@@ -28,7 +28,12 @@ export class AuthController {
     @Public()
     @Post('register')
     @ApiOperation({ summary: 'Register a new user' })
-    async register(@Body() registerDto: RegisterDto) {
-        return this.authService.register(registerDto)
+    async register(@Body() dto: RegisterDto) {
+        return this.authService.register(dto)
     }
+
+    // GET /api/auth/verify-email?token=...
+    @Public()
+    @Get('verify-email')
+    @ApiOperation({ summary: 'Verify user email' })
 }
