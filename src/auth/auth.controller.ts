@@ -36,4 +36,5 @@ export class AuthController {
     @Public()
     @Get('verify-email')
     @ApiOperation({ summary: 'Verify user email' })
+    async verifyEmail()
 }
