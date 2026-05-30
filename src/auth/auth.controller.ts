@@ -36,5 +36,11 @@ export class AuthController {
     @Public()
     @Get('verify-email')
     @ApiOperation({ summary: 'Verify user email' })
-    async verifyEmail()
+    async verifyEmail(
+        @Query('token') token: string,
+        @Res({ passthrough: true }) res: Response,
+    ) {
+        return this.authService.verifyEmail(token, res)
+    }
+
 }
