@@ -23,4 +23,10 @@ import { CurrentUser } from '../common/decorators/current-user.decorator'
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
+
+    // POST /api/auth/register
+    @Public()
+    @Post('register')
+    @ApiOperation({ summary: 'Register a new user' })
+
 }
