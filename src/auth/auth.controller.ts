@@ -6,10 +6,11 @@ import {
     HttpStatus,
     Post,
     Query,
-    Res
+    Req,
+    Res,
 } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
-import type { Response } from 'express'
+import type { Request, Response } from 'express'
 import { Public } from '../common/decorators/public.decorator'
 import { AuthService } from './auth.service'
 import { RegisterDto } from './dto/register.dto'
