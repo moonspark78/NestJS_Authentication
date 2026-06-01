@@ -60,6 +60,7 @@ export class AuthController {
     async refresh() {
 
         const cookies = req.cookies as Record<string, string>
+        const refreshToken = cookies?.refresh_token
         return this.authService.refresh(refreshToken, res)
     }
 
