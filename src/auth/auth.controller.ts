@@ -2,6 +2,7 @@ import {
     Body,
     Controller,
     Get,
+    HttpCode,
     Post,
     Query,
     Res
@@ -39,5 +40,7 @@ export class AuthController {
 
     // POST /api/auth/login
     @Public()
+    @Post('login')
+    @HttpCode(HttpStatus.OK)
 
 }
