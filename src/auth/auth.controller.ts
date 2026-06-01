@@ -43,5 +43,10 @@ export class AuthController {
     @Post('login')
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Login and receive access token + refresh token' })
+    async login(
+
+    ){
+        return this.authService.login(dto, res)
+    }
 
 }
