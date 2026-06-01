@@ -42,5 +42,6 @@ export class AuthController {
     @Public()
     @Post('login')
     @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Login and receive access token + refresh token' })
 
 }
