@@ -44,7 +44,8 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Login and receive access token + refresh token' })
     async login(
-
+        @Body() dto: any,
+        @Res({ passthrough: true }) res: Response,
     ){
         return this.authService.login(dto, res)
     }
