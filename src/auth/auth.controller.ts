@@ -37,4 +37,7 @@ export class AuthController {
         return this.authService.verifyEmail(token, res)
     }
 
+    // POST /api/auth/login
+    @Public()
+
 }
