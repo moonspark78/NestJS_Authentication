@@ -55,5 +55,7 @@ export class AuthController {
     // POST /api/auth/refresh
     @Public()
     @Post('refresh')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Refresh access token using refresh token cookie' })
 
 }
