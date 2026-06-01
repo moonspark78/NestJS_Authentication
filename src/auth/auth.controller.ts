@@ -57,7 +57,9 @@ export class AuthController {
     @Post('refresh')
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Refresh access token using refresh token cookie' })
-    async refresh() {
+    async refresh(
+        @Req() req: Request,
+    ) {
 
         const cookies = req.cookies as Record<string, string>
         const refreshToken = cookies?.refresh_token
