@@ -9,7 +9,7 @@ import {
     Req,
     Res,
 } from '@nestjs/common'
-import { ApiOperation, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import type { Request, Response } from 'express'
 import { Public } from '../common/decorators/public.decorator'
 import { AuthService } from './auth.service'
@@ -71,5 +71,7 @@ export class AuthController {
     // POST /api/auth/logout
     @Post('logout')
     @HttpCode(HttpStatus.OK)
+    @ApiBearerAuth()
+    @ApiOperation({})
 
 }
