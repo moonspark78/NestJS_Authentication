@@ -14,6 +14,7 @@ import type { Request, Response } from 'express'
 import { Public } from '../common/decorators/public.decorator'
 import { AuthService } from './auth.service'
 import { RegisterDto } from './dto/register.dto'
+import { CurrentUser } from '../common/decorators/current-user.decorator'
 
 
 @ApiTags('auth')
@@ -74,7 +75,7 @@ export class AuthController {
     @ApiBearerAuth()
     @ApiOperation({ summary: 'Logout and clear refresh token cookie' })
     async logout (
-
+        @CurrentUser() user: User,
     ) {
         return this.authService.logout(user.id, res)
     }
