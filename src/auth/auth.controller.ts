@@ -86,5 +86,6 @@ export class AuthController {
     @Get('me')
     @ApiBearerAuth()
     @ApiOperation({ summary: 'Get current authenticated user' })
+    me(@CurrentUser() user: User) {}
 
 }
