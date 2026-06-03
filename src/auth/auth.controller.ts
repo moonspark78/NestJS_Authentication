@@ -68,4 +68,7 @@ export class AuthController {
         return this.authService.refresh(refreshToken, res)
     }
 
+    // POST /api/auth/logout
+    @Post('logout')
+
 }
