@@ -70,5 +70,6 @@ export class AuthController {
 
     // POST /api/auth/logout
     @Post('logout')
+    @HttpCode(HttpStatus.OK)
 
 }
