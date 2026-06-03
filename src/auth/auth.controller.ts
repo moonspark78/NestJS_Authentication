@@ -72,6 +72,6 @@ export class AuthController {
     @Post('logout')
     @HttpCode(HttpStatus.OK)
     @ApiBearerAuth()
-    @ApiOperation({})
+    @ApiOperation({ summary: 'Logout and clear refresh token cookie' })
 
 }
