@@ -82,4 +82,7 @@ export class AuthController {
         return this.authService.logout(user.id, res)
     }
 
+    // GET /api/auth/me
+    @Get('me')
+
 }
