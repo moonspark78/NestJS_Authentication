@@ -11,4 +11,8 @@ import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
-export class JwtAuthGuard implements CanActivate {}
+export class JwtAuthGuard implements CanActivate {
+    constructor(
+        private reflector: Reflector,
+    )
+}
