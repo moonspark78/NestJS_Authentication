@@ -9,3 +9,6 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 import { UsersService } from 'src/users/users.service';
+
+@Injectable()
+export class JwtAuthGuard implements CanActivate {}
