@@ -9,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 import { UsersService } from 'src/users/users.service';
+import type { User } from '../../db/schema';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -28,7 +29,7 @@ export class JwtAuthGuard implements CanActivate {
 
         if (isPublic) return true;
 
-        const request = context.switchToHttp().getRequest<Request>();
+        const request = context.switchToHttp().getRequest<Request & { user: User }>();
         const token = this.extractTokenFromHeader(request);
 
         if (!token) {
