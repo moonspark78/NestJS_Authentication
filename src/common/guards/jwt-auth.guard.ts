@@ -36,6 +36,14 @@ export class JwtAuthGuard implements CanActivate {
         }
 
         let payload: { sub: string; email: string, role: string };
+
+        try {
+            payload = await this.jwtService.verifyAsync(token, {
+                secret: this.configService.get('JWT_ACCESS_SECRET'),
+            });
+        } catch {
+            throw new UnauthorizedException('Invalid token');
+        }
     }
 
     private extractTokenFromHeader(request: Request): string | undefined {
