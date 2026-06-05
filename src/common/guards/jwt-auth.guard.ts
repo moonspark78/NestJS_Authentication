@@ -16,5 +16,6 @@ export class JwtAuthGuard implements CanActivate {
         private reflector: Reflector,
         private jwtService: JwtService,
         private configService: ConfigService,
+        private usersService: UsersService,
     )
 }
