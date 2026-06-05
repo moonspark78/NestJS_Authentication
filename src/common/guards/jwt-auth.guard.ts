@@ -14,5 +14,7 @@ import { UsersService } from 'src/users/users.service';
 export class JwtAuthGuard implements CanActivate {
     constructor(
         private reflector: Reflector,
+        private jwtService: JwtService,
+        private configService: ConfigService,
     )
 }
