@@ -34,6 +34,8 @@ export class JwtAuthGuard implements CanActivate {
         if (!token) {
             throw new UnauthorizedException('No token provided');
         }
+
+        let payload: { sub: string; email: string, role: string };
     }
 
     private extractTokenFromHeader(request: Request): string | undefined {}
