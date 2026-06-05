@@ -44,6 +44,15 @@ export class JwtAuthGuard implements CanActivate {
         } catch {
             throw new UnauthorizedException('Invalid token');
         }
+
+        const user = await this.usersService.findById(payload.sub);
+
+        if (!user) {
+            throw new UnauthorizedException('User not found');
+        }
+
+        request.user = user;
+        return true;
     }
 
     private extractTokenFromHeader(request: Request): string | undefined {
