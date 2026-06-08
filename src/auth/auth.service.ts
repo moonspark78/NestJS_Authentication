@@ -163,7 +163,14 @@ export class AuthService {
         return { message: "Logged out successfully" };
     }
 
-    async forgotPassword(email: string) {}
+
+
+    async forgotPassword(email: string) {
+        const user = await this.usersService.findByEmail(email);
+    }
+
+
+
 
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
