@@ -174,6 +174,11 @@ export class AuthService {
                     "If an account with that email exists, a password reset link has been sent.",
             };
         }
+
+        const resetToken = crypto.randomBytes(32).toString("hex");
+        const resetTokenExpiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+        
     }
 
 
