@@ -178,7 +178,17 @@ export class AuthService {
         const resetToken = crypto.randomBytes(32).toString("hex");
         const resetTokenExpiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
-        
+        await this.usersService.update(user.id, {
+            resetToken,
+            resetTokenExpiresAt: resetTokenExpiresAt.toISOString(),
+        });
+
+        void this.emailService.sendPasswordResetEmail(user.email, resetToken);
+
+        return {
+            message:
+                "If an account with that email exists, a password reset link has been sent.",
+        };
     }
 
 
