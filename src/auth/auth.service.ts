@@ -167,6 +167,13 @@ export class AuthService {
 
     async forgotPassword(email: string) {
         const user = await this.usersService.findByEmail(email);
+
+        if (!user) {
+            return {
+                message:
+                    "If an account with that email exists, a password reset link has been sent.",
+            };
+        }
     }
 
 
