@@ -163,6 +163,8 @@ export class AuthService {
         return { message: "Logged out successfully" };
     }
 
+    async forgotPassword(email: string) {}
+
     private async generateToken(user: User) {
         const payload = { sub: user.id, email: user.email, role: user.role };
 
